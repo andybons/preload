@@ -8,7 +8,7 @@ Without fetch polyfill [<a href="/">with</a>]
   xhr.addEventListener('load', (e)=>{
     console.info('got the thing:', e.target.responseText);
   });
-  xhr.open('GET', '/thing.json');
+  xhr.open('GET', '/thing.json', true);
   window.setTimeout(()=>{ xhr.send(); },
       window.parseInt(new URL(window.location).searchParams.get('timeout') || 0));
 </script>
