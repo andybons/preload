@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="preload" href="/thing.json">
+<body>
+Without fetch polyfill [<a href="/">with</a>]
+<script>
+  var xhr = new XMLHttpRequest();
+  xhr.addEventListener('load', (e)=>{
+    console.info('got the thing:', e.target.responseText);
+  });
+  xhr.open('GET', '/thing.json');
+  window.setTimeout(()=>{ xhr.send(); },
+      window.parseInt(new URL(window.location).searchParams.get('timeout') || 0));
+</script>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script>window.fetch = undefined;</script>
+<script src="fetch.js"></script>
+<link rel="preload" href="/thing.json">
+<body>
+With fetch polyfill [<a href="/without.html">without</a>]
+<script>
+  window.setTimeout(()=>{
+    fetch('/thing.json').then((resp)=>{
+      resp.text().then((t)=>{
+        console.info('got the thing:', t);
+      });
+    });
+  }, window.parseInt(new URL(window.location).searchParams.get('timeout') || 0));
+</script>
